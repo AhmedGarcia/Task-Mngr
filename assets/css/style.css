@@ -1,0 +1,9 @@
+.task-card {
+    margin-bottom: 1rem;
+}
+.overdue {
+    background-color: #f8d7da;
+}
+.nearing-deadline {
+    background-color: #fff3cd;
+}
