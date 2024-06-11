@@ -1,26 +1,63 @@
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    max-width: 1200px;
+}
 .task-board {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .task-column {
     width: 30%;
-    min-height: 400px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    border: 1px solid #ddd;
+    background-color: #e9ecef;
+    padding: 0;
     border-radius: 5px;
+    min-height: 600px;
+    position: relative;
+}
+.task-column-header {
+    text-align: center;
+    color: #343a40;
+    font-size: 1.5em;
+    padding: 10px 0;
+    background-color: #dee2e6;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.task-list {
+    padding: 15px;
 }
 .task {
     background-color: #fff;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: move;
 }
-.task.yellow {
-    background-color: #fff3cd;
+.yellow {
+    background-color: #fff3cd !important;
 }
-.task.red {
-    background-color: #f8d7da;
+.red {
+    background-color: #f8d7da !important;
+}
+.btn-success {
+    display: block;
+    margin: 0 auto;
+}
+.modal-header {
+    background-color: #343a40;
+    color: white;
+}
+.btn-primary {
+    background-color: #343a40;
+    border: none;
+}
+.modal-dialog {
+    max-width: 500px;
 }
