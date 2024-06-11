@@ -1,9 +1,26 @@
-.task-card {
-    margin-bottom: 1rem;
+.task-board {
+    display: flex;
+    justify-content: space-between;
 }
-.overdue {
-    background-color: #f8d7da;
+.task-column {
+    width: 30%;
+    min-height: 400px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
-.nearing-deadline {
+.task {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: move;
+}
+.task.yellow {
     background-color: #fff3cd;
+}
+.task.red {
+    background-color: #f8d7da;
 }
