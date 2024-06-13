@@ -2,6 +2,20 @@
 let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
 
+console.log("Initial task list:", taskList); // Debugging: Print the initial task list
+
+// Ensure all tasks have valid states
+const validStates = ["todo", "inprogress", "done"];
+taskList = taskList.filter(task => {
+    if (!validStates.includes(task.state)) {
+        console.error(`Invalid task state: ${task.state}`, task); // Improved debugging
+        return false; // Remove tasks with invalid states
+    }
+    return true;
+});
+
+// Save cleaned-up task list to localStorage
+localStorage.setItem('tasks', JSON.stringify(taskList));
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -55,14 +69,19 @@ function createTaskCard(task) {
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
     const columns ={
-        todo: document.getElementById('todo-column'),
-        inprogress: document.getElementById('inprogress-column'),
-        done: document.getElementById('done-column')
+        todo: document.getElementById('todo-list'),
+        inprogress: document.getElementById('inprogress-list'),
+        done: document.getElementById('done-list')
         
     };
     Object.values(columns).forEach(column => column.innerHTML = '');
 
     taskList.forEach(task =>{
+        if (!columns[task.state]) {
+            console.error(`Invalid task state: ${task.state}`);
+            return;
+        }
+
         const taskCard = createTaskCard(task);
         columns[task.state].appendChild(taskCard);
     });
@@ -70,7 +89,15 @@ function renderTaskList() {
     // Make cards draggable
     $('.task-card').draggable({
         revert: 'invalid',
-        helper: 'clone'
+        helper: 'clone',
+        start: function() {
+            $(this).addClass('dragging');
+            console.log('Dragging started:', $(this).data('id'));
+        },
+        stop: function() {
+            $(this).removeClass('dragging');
+            console.log('Dragging stopped:', $(this).data('id'));
+        }
     });
 
     // Make columns droppable

@@ -1,22 +1,28 @@
 body {
     background-color: #f8f9fa;
 }
+
 .container {
     max-width: 1200px;
 }
+
 .task-board {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .task-column {
     width: 30%;
     background-color: #e9ecef;
     padding: 0;
     border-radius: 5px;
-    min-height: 600px;
+    min-height: 800px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
+
 .task-column-header {
     text-align: center;
     color: #343a40;
@@ -29,9 +35,13 @@ body {
     top: 0;
     z-index: 10;
 }
+
 .task-list {
     padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
 }
+
 .task {
     background-color: #fff;
     padding: 10px;
@@ -40,24 +50,34 @@ body {
     border-radius: 5px;
     cursor: move;
 }
+
+.task-card.dragging {
+    z-index: 1000 !important; /* Make sure this is high enough to be above other elements */
+}
+
 .yellow {
     background-color: #fff3cd !important;
 }
+
 .red {
     background-color: #f8d7da !important;
 }
+
 .btn-success {
     display: block;
     margin: 0 auto;
 }
+
 .modal-header {
     background-color: #343a40;
     color: white;
 }
+
 .btn-primary {
     background-color: #343a40;
     border: none;
 }
+
 .modal-dialog {
     max-width: 500px;
 }
